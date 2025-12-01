@@ -58,6 +58,13 @@ const projectSet: IProject[] = [
     image: "/images/portfolio/punching.webp",
     link: "https://github.com/rahul-b-p/AttendanceManagementSystem-Punching",
   },
+  {
+    id: 8,
+    title: "Health Care Management App",
+    category: PortfolioCategories.NODE,
+    image: "/images/portfolio/helthcare.webp",
+    link: "https://github.com/rahul-b-p/healthcare-management"
+  }
 ];
 
 export default {
