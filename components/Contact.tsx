@@ -30,9 +30,8 @@ export default function Contact() {
       formData.email,
       formData.message,
     );
-    console.log(response)
     if (response.status == 200) {
-      toast.success("Enquiry Sent Successfully");
+      toast.success("Thank you! Your enquiry has been submitted successfully.");
     } else {
       toast.error("Something went wrong");
     }
