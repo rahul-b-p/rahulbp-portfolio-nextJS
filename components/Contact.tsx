@@ -7,6 +7,8 @@ import { Textarea } from "@/components/ui/Textarea";
 import { Button } from "@/components/ui/Button";
 import { MapPin, Phone, Mail } from "lucide-react";
 import data from "@/constants/contact";
+import { submitContactForm } from "@/services/contact";
+import { toast } from "sonner";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -20,15 +22,22 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     // Form submission logic would go here
-    console.log("Form submitted:", formData);
+    const response = await submitContactForm(
+      formData.name,
+      formData.email,
+      formData.message,
+    );
+    console.log(response)
+    if (response.status == 200) {
+      toast.success("Enquiry Sent Successfully");
+    } else {
+      toast.error("Something went wrong");
+    }
     // Reset form
     setFormData({ name: "", email: "", message: "" });
-    alert(
-      "Thank you for your message! This is a demo form. will update it soon.."
-    );
   };
 
   return (
